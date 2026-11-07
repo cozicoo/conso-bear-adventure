@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07080c;
+  --color-fg: #f4f7fb;
+  --color-muted: #9aa6b8;
+  --color-ice: #7ec8e3;
+  --color-accent: #f5c542;
+  --color-surface: #12151c;
+  --color-border: #2a3140;
+  --font-display: "Silkscreen", ui-monospace, monospace;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html,
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    min-height: 100%;
+  }
+}
+
+.pixel-screen {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 800 / 448;
+  background: var(--color-bg);
+  border: 4px solid var(--color-border);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  touch-action: none;
+}
+
+.game-page {
+  width: min(100%, 1120px);
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-stage {
+  position: relative;
+  width: 100%;
+  background: var(--color-bg);
+  box-shadow: 0 16px 48px rgb(0 0 0 / 45%);
+}
+
+.game-header {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.game-wordmark {
+  color: #f4f7fb;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+}
+
+.game-tagline {
+  margin-top: 10px;
+  color: #d5dde6;
+  font-family: var(--font-display);
+  font-size: 1.16rem;
+  line-height: 1.45;
+}
+
+.game-credit {
+  margin-top: 8px;
+  color: var(--color-ice);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.credit-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 4px;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgb(7 16 24 / 78%);
+}
+
+.game-card {
+  width: min(100%, 420px);
+  padding: 28px;
+  text-align: center;
+  color: var(--color-fg);
+  background: var(--color-surface);
+  border: 4px solid var(--color-border);
+  box-shadow: 8px 8px 0 rgb(0 0 0 / 45%);
+}
+
+.game-kicker,
+.game-title,
+.game-best,
+.game-start {
+  font-family: var(--font-display);
+}
+
+.game-kicker {
+  color: var(--color-ice);
+  font-size: 0.76rem;
+}
+
+.game-title {
+  margin-top: 8px;
+  color: var(--color-accent);
+  font-size: 1.36rem;
+}
+
+.game-copy {
+  margin-top: 12px;
+  color: var(--color-fg);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+
+.game-best {
+  margin-top: 12px;
+  color: var(--color-ice);
+  font-size: 0.84rem;
+}
+
+.game-start {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 20px;
+  color: var(--color-bg);
+  background: var(--color-accent);
+  border: 0;
+  font-size: 0.92rem;
+}
+
+.game-start:active,
+.touch-button:active {
+  transform: translateY(2px);
+}
+
+.controls-note {
+  margin-top: 12px;
+  color: var(--color-muted);
+  text-align: center;
+  font-size: 1rem;
+}
+
+#touch {
+  display: none;
+  user-select: none;
+}
+
+.touch-controls {
+  margin-top: 12px;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.touch-group {
+  display: flex;
+  gap: 8px;
+}
+
+.touch-button {
+  min-width: 64px;
+  min-height: 64px;
+  padding-inline: 12px;
+  color: var(--color-fg);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  touch-action: none;
+}
+
+@media (max-width: 520px) {
+  .game-page {
+    justify-content: flex-start;
+    padding: 8px;
+  }
+
+  .game-card {
+    padding: 16px;
+  }
+
+  .game-copy,
+  .controls-note {
+    font-size: 0.8rem;
+  }
+
+  .game-wordmark {
+    font-size: 1.12rem;
+    letter-spacing: 0.04em;
+  }
+
+  .game-tagline {
+    font-size: 0.72rem;
+  }
+}
+
+@media (pointer: coarse) {
+  #touch {
+    display: flex;
+  }
+}
